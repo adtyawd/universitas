@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\NomorUndian;
 use Exception;
 use App\Models\Peserta;
 use Illuminate\Http\Request;
@@ -112,18 +113,31 @@ class PesertaController extends Controller
             $data = Peserta::where('id', $r->id)->first();
 
             if($data){
-                // if($data->status_daftar == 1){
-                //     return response()->json([
-                //         'status' => 0,
-                //         'message' => "Peserta Sudah Terdaftar"
-                //     ]);
-                // }
+                if($data->status_daftar == 1){
+                    return response()->json([
+                        'status' => 0,
+                        'message' => "Peserta Sudah Terdaftar"
+                    ]);
+                }
+
+                $excludeNumber = NomorUndian::pluck('no_undian');
+
+                do{
+                    $generateNumber = (string)mt_rand(1000, 9999);
+                }while(in_array($generateNumber, $excludeNumber));
+
+                $nomorUndian = NomorUndian::create([
+                    'no_undian' => $generateNumber
+                ]);
+
                 $data->status_daftar = 1;
+                $data->nomor_undian_id = $nomorUndian->id;
                 $data->save();
 
                 return response()->json([
                     'status' => 1,
-                    "data" => $data
+                    "data" => $data,
+                    "no_undian" => $generateNumber
                 ]);
             }
 

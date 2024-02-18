@@ -21,6 +21,7 @@ return new class extends Migration
             $table->boolean('tampil')->default(0);
             $table->boolean('status_daftar')->default(0);
             $table->string('qr')->nullable();
+            $table->foreignId('nomor_undian_id')->nullable();
             $table->timestamps();
         });
     }
