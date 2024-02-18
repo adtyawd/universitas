@@ -1,0 +1,12 @@
+banner
+background
+logo
+rundown
+
+
+
+user daftar -> dapat id-card + barcode (dikirim ke otp) -> barcode discan -> dapat nomor undian (dikirim ke otp)
+
+
+id user harus hash
+setiap validasi, value id juga harus diperiksa
