@@ -120,7 +120,7 @@ class PesertaController extends Controller
                     ]);
                 }
 
-                $excludeNumber = NomorUndian::pluck('no_undian');
+                $excludeNumber = NomorUndian::pluck('no_undian')->toArray();
 
                 do{
                     $generateNumber = (string)mt_rand(1000, 9999);

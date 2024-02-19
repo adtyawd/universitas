@@ -108,7 +108,7 @@
 
                                     <div class="row m-t-30">
                                         <div class="col-md-12">
-                                            <button type="button" id="store" class="btn btn-primary btn-md btn-block waves-effect waves-light text-center m-b-20">Daftar</button>
+                                            <button type="button" id="store" style="background-color: red" class="btn btn-primary btn-md btn-block waves-effect waves-light text-center m-b-20">Daftar</button>
                                         </div>
                                     </div>
                                     <hr />

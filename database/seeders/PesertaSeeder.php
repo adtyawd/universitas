@@ -13,14 +13,14 @@ class PesertaSeeder extends Seeder
      */
     public function run(): void
     {
-        for ($i=1; $i < 5; $i++) {
-            Peserta::create([
-                'nama' => "Peserta " . $i,
-                'nama_pendamping' => "Pendamping " . $i,
-                'no_wa' => "123" . $i,
-                'email' => $i . "@gmail.com",
-                'nama_md' => "nehru"
-            ]);
-        }
+        // for ($i=1; $i < 5; $i++) {
+        //     Peserta::create([
+        //         'nama' => "Peserta " . $i,
+        //         'nama_pendamping' => "Pendamping " . $i,
+        //         'no_wa' => "123" . $i,
+        //         'email' => $i . "@gmail.com",
+        //         'nama_md' => "nehru"
+        //     ]);
+        // }
     }
 }

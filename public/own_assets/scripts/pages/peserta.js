@@ -85,7 +85,7 @@ $("#store").on("click", function(){
                 $("#md").val("");
 
                 var qrcode = new QRCode(document.getElementById("qrcode-2"), {
-                    text: "http://127.0.0.1:8000/daftar-peserta/detail-peserta/" + response.data.id,
+                    text: "https://advancegatheringmedan.com/daftar-peserta/detail-peserta/" + response.data.id,
                     width: 128,
                     height: 128,
                     colorDark : "#000",

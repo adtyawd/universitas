@@ -26,6 +26,8 @@ Route::redirect('/home', '/dashboard');
 Route::get('/daftar', [PesertaController::class, 'pendaftaran']);
 Route::post('/daftar', [PesertaController::class, 'store']);
 
+Route::post('/daftar-peserta/generated-qrcode', [PesertaController::class, 'generatedQr']);
+
 Route::middleware('guest')->group(function () {
     Route::get('/login', [AuthController::class, 'login'])->name('login');
     Route::post('/login', [AuthController::class, 'loginCheck']);
@@ -34,6 +36,7 @@ Route::middleware('guest')->group(function () {
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index']);
     Route::get('/undian', [UndianController::class, 'index']);
+    Route::get('/load-number', [UndianController::class, 'generateNumber']);
 
     Route::get('/monitor', [MonitorController::class, 'index']);
     Route::get('/monitor/check', [MonitorController::class, 'getUser']);
@@ -44,7 +47,6 @@ Route::middleware('auth')->group(function () {
     Route::post('/daftar-peserta/delete-data', [PesertaController::class, 'delete']);
     Route::get('/daftar-peserta/detail-peserta/{id}', [PesertaController::class, 'detail']);
     Route::post('/daftar-peserta/status-daftar', [PesertaController::class, 'statusDaftar']);
-    Route::post('/daftar-peserta/generated-qrcode', [PesertaController::class, 'generatedQr']);
 
     Route::get('/daftar-admin', [AdminController::class, 'index']);
     Route::post('/daftar-admin/store-admin', [AdminController::class, 'store']);
@@ -54,4 +56,10 @@ Route::middleware('auth')->group(function () {
     Route::post('/daftar-admin/delete-data', [AdminController::class, 'delete']);
 
     Route::post('/logout', [AuthController::class, 'logout']);
+});
+
+Route::get('/storage-link', function () {
+    $targetStorage = storage_path('app/public');
+    $linkFolder = $_SERVER['DOCUMENT_ROOT'] . '/file_uploaded';
+    symlink($targetStorage, $linkFolder);
 });

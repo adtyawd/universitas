@@ -194,7 +194,7 @@
     </div>
   </div>
 
-  <script src="{{ asset('registrasi_assets/js/jquery-3.6.0.min.js') }}"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
   <script>
 
     function animate(id, durationParam, number) {
@@ -241,10 +241,10 @@
             method: 'GET',
             success: function(response){
                 console.log(response.data)
-                $(`#digit1`).css('color', 'rgb(58, 58, 58)');
-                $(`#digit2`).css('color', 'rgb(58, 58, 58)');
-                $(`#digit3`).css('color', 'rgb(58, 58, 58)');
-                $(`#digit4`).css('color', 'rgb(58, 58, 58)');
+                $(`#digit1`).css('color', 'rgb(248, 0, 0)');
+                $(`#digit2`).css('color', 'rgb(248, 0, 0)');
+                $(`#digit3`).css('color', 'rgb(248, 0, 0)');
+                $(`#digit4`).css('color', 'rgb(248, 0, 0)');
                 var audio = new Audio('{{ asset('main_assets/assets/sounds/startspin.mp3') }}');
                 audio.play();
 
@@ -267,10 +267,10 @@
     });
 
     $("#reset").on("click", function(){
-        $(`#digit1`).css('color', 'rgb(58, 58, 58)');
-        $(`#digit2`).css('color', 'rgb(58, 58, 58)');
-        $(`#digit3`).css('color', 'rgb(58, 58, 58)');
-        $(`#digit4`).css('color', 'rgb(58, 58, 58)');
+        $(`#digit1`).css('color', 'rgb(248, 0, 0)');
+        $(`#digit2`).css('color', 'rgb(248, 0, 0)');
+        $(`#digit3`).css('color', 'rgb(248, 0, 0)');
+        $(`#digit4`).css('color', 'rgb(248, 0, 0)');
         var audio = new Audio('{{ asset('main_assets/assets/sounds/suck.mp3') }}');
         audio.play();
 

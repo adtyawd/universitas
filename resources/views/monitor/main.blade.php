@@ -179,11 +179,12 @@
             success: function (response) {
                 if(response.status == 1){
                     $("#greet").text(response.data);
-                }else if(response.status == 2){
-                    setInterval(() => {
-                        $("#greet").text("acara");
-                    }, 5000);
                 }
+                // else if(response.status == 2){
+                //     setInterval(() => {
+                //         $("#greet").text("acara");
+                //     }, 5000);
+                // }
             },
             error: function (response) {
                 console.log(response.message);
