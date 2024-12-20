@@ -8,18 +8,11 @@ $("#store").on("click", function(){
         },
         success: function(response){
             if (response.status) {
-                var raw = JSON.stringify({
-                    instance_key: "ib1ka7XyyTnP",
-                    jid: response.data.no_wa,
-                    message: `${response.no_undian}`
-                });
-                var requestOptions = {
-                    method: "POST",
-                    body: raw,
-                    redirect: "follow",
-                    mode: "no-cors",
-                };
-                fetch("https://whatsva.id/api/sendMessageText", requestOptions);
+                Swal.fire({
+                    title: 'Success',
+                    text: "Pendaftaran ada berhasil!",
+                    icon: 'success'
+                })
             } else {
                 Swal.fire({
                     title: 'Oops..',

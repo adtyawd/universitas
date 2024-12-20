@@ -6,7 +6,7 @@
   <title>Random Number Animation</title>
   <style>
     body {
-        background-image: url('{{ asset('main_assets/assets/background.gif') }}');
+        background-image: url('{{ asset('own_assets/images/login.jpg') }}');
         background-size: cover;
         display: flex;
         justify-content: center;
@@ -17,9 +17,9 @@
 
     .ctr {
         text-align: center;
-        background-color: rgba(17, 15, 66, 0.8);
+        background-color: rgba(184, 184, 184, 0.8);
         padding: 0 50px 50px 50px;
-        box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.9); /* Menambahkan bayangan */
+        box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.9);
         width: 100%;
         height: 100%
     }
@@ -165,8 +165,7 @@
     <div class="logo">
         <img width="500px" src="{{ asset('own_assets/images/logo.png') }}" alt="">
     </div>
-    <h1 style="color: white; font-size: 100px" id="greet"></h1>
-
+    <div style="color: black;" id="greet"></div>
   </div>
 
   <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
@@ -178,7 +177,15 @@
             method: 'GET',
             success: function (response) {
                 if(response.status == 1){
-                    $("#greet").text(response.data);
+                    $("#greet").empty();
+                    let html = `
+                        <div>
+                            <h3 style="color: black; font-size: 50px; margin-top: -20px">Selamat Datang</h3> <br>
+                            <h1 style="color: black; font-size: 90px; margin-top: -20px">${response.data.nama} & ${response.data.nama_pendamping}</h1> <br>
+                            <h2 style="color: black; font-size: 70px; margin-top: -20px">${response.data.nama_toko}</h2>
+                        </div>
+                    `;
+                    $("#greet").append(html);
                 }
                 // else if(response.status == 2){
                 //     setInterval(() => {

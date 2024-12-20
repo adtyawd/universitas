@@ -89,20 +89,8 @@
                                     </div>
 
                                     <div class="form-group form-primary">
-                                        <label for="wa" class="form-label">Nomor Whatsapp :</label>
-                                        <input type="text" id="wa" name="wa" class="form-control" value="{{ $peserta->no_wa }}" readonly placeholder="Masukkan Nomor Whatsapp" oninput="this.value = this.value.replace(/[^0-9]/g, '').substring(0, 15)">
-                                        <span class="form-bar"></span>
-                                    </div>
-
-                                    <div class="form-group form-primary">
-                                        <label for="email" class="form-label">Email :</label>
-                                        <input type="email" id="email" name="email" class="form-control" value="{{ $peserta->email }}" readonly placeholder="Masukkan Email">
-                                        <span class="form-bar"></span>
-                                    </div>
-
-                                    <div class="form-group form-primary">
-                                        <label for="md" class="form-label">Nama MD :</label>
-                                        <input type="text" id="md" name="md" class="form-control" readonly value="{{ $peserta->nama_md }}" placeholder="Masukkan Nama MD">
+                                        <label for="wa" class="form-label">Nama Toko :</label>
+                                        <input type="text" id="toko" name="wa" class="form-control" value="{{ $peserta->nama_toko }}" readonly placeholder="Masukkan Nama Toko">
                                         <span class="form-bar"></span>
                                     </div>
 

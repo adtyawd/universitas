@@ -27,6 +27,7 @@ Route::get('/daftar', [PesertaController::class, 'pendaftaran']);
 Route::post('/daftar', [PesertaController::class, 'store']);
 
 Route::post('/daftar-peserta/generated-qrcode', [PesertaController::class, 'generatedQr']);
+Route::get('/daftar-peserta/load-data', [PesertaController::class, 'loadData']);
 
 Route::middleware('guest')->group(function () {
     Route::get('/login', [AuthController::class, 'login'])->name('login');

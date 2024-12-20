@@ -2,7 +2,7 @@
 <html lang="en">
     <!-- Mirrored from demo.dashboardpack.com/adminty-html/default/auth-normal-sign-in.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 04 Jan 2024 05:00:01 GMT -->
     <head>
-        <title>Customer Adavance Gathering Medan - {{ $pageTitle }} </title>
+        <title>Data Universitas - {{ $pageTitle }} </title>
         <!--[if lt IE 10]>
 		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>

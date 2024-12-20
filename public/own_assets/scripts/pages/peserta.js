@@ -24,81 +24,93 @@ function dataURLtoFile(dataURL, filename) {
     return new File([u8arr], filename, { type: mime });
 }
 
-function handleQRCodeReady(id) {
+function handleQRCodeReady(data) {
     var canvas = document.getElementById("qrcode-2").getElementsByTagName("canvas")[0];
     var imageURL = canvas.toDataURL("image/jpeg");
     var file = dataURLtoFile(imageURL, 'qrcode.jpg');
     var formData = new FormData();
 
-    formData.append('qrcode', file);
-    formData.append('_token', $("meta[name='csrf-token']").attr('content'));
-    formData.append('id', id);
+    $("#qr_code").attr('src', URL.createObjectURL(file));
+    $("#nama_peserta").text(`${data.nama_toko}`);
 
-    $.ajax({
-        url: '/daftar-peserta/generated-qrcode',
-        method: 'POST',
-        data: formData,
-        contentType: false,
-        processData: false,
-        success: function(response){
-            if(response.status){
-                var raw = JSON.stringify({
-                    instance_key: "ib1ka7XyyTnP",
-                    jid: response.data.no_wa,
-                    imageUrl:
-                        "https://advancegatheringmedan.com/file_uploaded/qrcode/" + response.data.qr,
-                    caption: `ini adalah qrcode anda`,
-                });
-                var requestOptions = {
-                    method: "POST",
-                    body: raw,
-                    redirect: "follow",
-                    mode: "no-cors",
-                };
-                fetch("https://whatsva.id/api/sendImageUrl", requestOptions);
-            }
-        },
-        // error: function(response) {
-        //     return false;
-        // }
-    });
+    // $("#nama_toko").text(`${data.nama_toko}`);
+    $(".container-1").show();
+    $(".container-2").hide();
+
+    $("#store").hide();
+    $("#download").show();
+
+    html2canvas($(".container-1")[0], { useCORS: true }).then(function(canvas){
+        let ctr = canvas.toDataURL('image/jpeg');
+        let idCard = dataURLtoFile(ctr, 'idcard.jpg');
+
+        formData.append('idcard', idCard);
+        formData.append('qrcode', file);
+        formData.append('_token', $("meta[name='csrf-token']").attr('content'));
+        formData.append('id', data.id);
+
+        $.ajax({
+                url: '/daftar-peserta/generated-qrcode',
+                method: 'POST',
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function(response){
+                    if(response.status){
+                        $("#nama_file").val(response.data.idcard);
+                    }else{
+                        console.log(response.message)
+                    }
+                },
+                error: function(response) {
+                    console.log(response.message)
+                }
+            });
+    })
 }
 
+$("#download").on("click", function(){
+    $(this).prop('disabled', true);
+    $(this).addClass('loading');
+
+    let namaFile = $("#nama_file").val();
+    window.location = "/download/" + namaFile;
+});
+
 $("#store").on("click", function(){
+    $(this).prop('disabled', true);
+    $(this).addClass('loading');
     $.ajax({
         url: '/daftar',
         method: 'POST',
         data: {
             "_token": $("meta[name='csrf-token']").attr('content'),
-            "nama": $("#nama").val(),
-            "pendamping": $("#pendamping").val(),
+            "toko": $("#toko").val(),
             "wa": $("#wa").val(),
-            "email": $("#email").val(),
-            "md": $("#md").val()
+            "email": $("#email").val()
         },
         success: function(response){
             if (response.status) {
-                $("#nama").val("");
-                $("#pendamping").val("");
+                $("#toko").val("");
                 $("#wa").val("");
                 $("#email").val("");
-                $("#md").val("");
 
-                var qrcode = new QRCode(document.getElementById("qrcode-2"), {
-                    text: "https://advancegatheringmedan.com/daftar-peserta/detail-peserta/" + response.data.id,
-                    width: 128,
-                    height: 128,
-                    colorDark : "#000",
-                    colorLight : "#ffffff",
-                    correctLevel : QRCode.CorrectLevel.H
-                });
+                // var qrcode = new QRCode(document.getElementById("qrcode-2"), {
+                // text: "https://advancegatheringmedan.com/daftar-peserta/detail-peserta/" + response.data.id,
+                //     width: 128,
+                //     height: 128,
+                //     colorDark : "#000",
+                //     colorLight : "#ffffff",
+                //     correctLevel : QRCode.CorrectLevel.H
+                // });
 
-                handleQRCodeReady(response.data.id);
-                Swal.fire({
-                    title: 'Success',
-                    text: "Pendaftaran ada berhasil!",
-                    icon: 'success'
-                })
+                // Swal.fire({
+                //     title: 'Success',
+                //     text: "Pendaftaran ada berhasil!",
+                //     icon: 'success'
+                // });
+
+                // handleQRCodeReady(response.data);
             } else {
                 Swal.fire({
                     title: 'Oops..',
@@ -129,11 +141,9 @@ $(".edit").on('click', function () {
         success: function (response) {
             if (response.status) {
                 $("#id_peserta").val(response.data.id);
-                $("#edit_nama").val(response.data.nama);
-                $("#edit_pendamping").val(response.data.nama_pendamping);
+                $("#edit_toko").val(response.data.nama_toko);
                 $("#edit_wa").val(response.data.no_wa);
                 $("#edit_email").val(response.data.email);
-                $("#edit_md").val(response.data.nama_md);
 
                 $("#edit-Modal").modal('show');
             } else {
@@ -163,11 +173,9 @@ $("#update").on("click", function(){
         data: {
             "_token": $("meta[name='csrf-token']").attr('content'),
             "id": $("#id_peserta").val(),
-            "nama": $("#edit_nama").val(),
-            "pendamping": $("#edit_pendamping").val(),
+            "nama_toko": $("#edit_toko").val(),
             "wa": $("#edit_wa").val(),
-            "email": $("#edit_email").val(),
-            "md": $("#edit_md").val(),
+            "email": $("#edit_email").val()
         },
         success: function(response){
             if (response.status) {

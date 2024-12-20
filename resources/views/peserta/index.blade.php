@@ -60,8 +60,9 @@
                                       <thead>
                                         <tr>
                                             <th>No. </th>
-                                            <th>Nama Peserta</th>
-                                            <th>Nama Pendamping</th>
+                                            <th>Nama 1</th>
+                                            <th>Nama 2</th>
+                                            <th>Nama Toko</th>
                                             <th>Nomor Whatsapp</th>
                                             <th>Email</th>
                                             <th>Nama MD</th>
@@ -75,6 +76,7 @@
                                                 <td>{{ $index++ }}</td>
                                                 <td>{{ $peserta->nama }} <br></td>
                                                 <td>{{ $peserta->nama_pendamping }}</td>
+                                                <td>{{ $peserta->nama_toko }}</td>
                                                 <td>{{ $peserta->no_wa }}</td>
                                                 <td>{{ $peserta->email }}</td>
                                                 <td>{{ $peserta->nama_md }}</td>
@@ -88,8 +90,9 @@
                                       <tfoot>
                                         <tr>
                                             <th>No. </th>
-                                            <th>Nama Peserta</th>
-                                            <th>Nama Pendamping</th>
+                                            <th>Nama 1</th>
+                                            <th>Nama 2</th>
+                                            <th>Nama Toko</th>
                                             <th>Nomor Whatsapp</th>
                                             <th>Email</th>
                                             <th>Nama MD</th>
@@ -141,6 +144,13 @@
                         </div>
                     </div>
                     <div class="form-group row">
+                        <label class="col-sm-4 col-form-label">Nama Toko</label>
+                        <div class="col-sm-8">
+                          <input type="text" class="form-control" name="nama" id="edit_toko" placeholder="Masukkan Nama Pendamping">
+                          <span class="messages"></span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
                         <label class="col-sm-4 col-form-label">Nomor Whatsapp</label>
                         <div class="col-sm-8">
                           <input type="text" class="form-control" name="nama" id="edit_wa" placeholder="Masukkan No. Whatsapp" oninput="this.value = this.value.replace(/[^0-9]/g, '').substring(0, 15)">
@@ -154,13 +164,13 @@
                           <span class="messages"></span>
                         </div>
                     </div>
-                    <div class="form-group row">
+                    {{-- <div class="form-group row">
                         <label class="col-sm-4 col-form-label">Nama MD</label>
                         <div class="col-sm-8">
                           <input type="text" class="form-control" name="nama" id="edit_md" placeholder="Masukkan Nama MD">
                           <span class="messages"></span>
                         </div>
-                    </div>
+                    </div> --}}
                       {{-- <div class="form-group row">
                         <label class="col-sm-4 col-form-label">Tanggal Masuk</label>
                         <div class="col-sm-8">

@@ -23,7 +23,7 @@ Date         : 4/March/21;
 9. Support Css
 10. Our Team Css
 11. Blog Css
-12. Newsletter Css 
+12. Newsletter Css
 13. Contact Css
 14. footer Css
 15. Page Css
@@ -218,13 +218,13 @@ p {
     Custom slider options
 **********************************************/
 .tp-banner-container {
-    position: relative;
+    /* position: relative; */
     z-index: 1;
     padding: 0;
     width: 100%;
 }
 .tp-banner {
-    position: relative;
+    /* position: relative; */
     width: 100%;
 }
 .tp-caption {

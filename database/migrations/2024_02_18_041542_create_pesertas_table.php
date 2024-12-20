@@ -15,12 +15,13 @@ return new class extends Migration
             $table->id();
             $table->string('nama');
             $table->string('nama_pendamping');
+            $table->string('nama_toko');
             $table->string('no_wa')->unique();
             $table->string('email')->unique();
-            $table->string('nama_md');
             $table->boolean('tampil')->default(0);
             $table->boolean('status_daftar')->default(0);
             $table->string('qr')->nullable();
+            $table->string('idcard')->nullable();
             $table->foreignId('nomor_undian_id')->nullable();
             $table->timestamps();
         });

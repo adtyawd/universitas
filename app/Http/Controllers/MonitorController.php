@@ -13,14 +13,16 @@ class MonitorController extends Controller
 
     public function getUser(){
         try{
-            $user = Peserta::where('tampil', 0)->first();
+            $user = Peserta::where('tampil', 0)
+                        ->where('status_daftar', 1)
+                        ->first();
 
             if($user){
                 $user->tampil = 1;
                 $user->save();
                 return response()->json([
                     'status' => 1,
-                    'data' => $user->nama
+                    'data' => $user
                 ]);
             }else{
                 return response()->json([

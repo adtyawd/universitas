@@ -33,17 +33,16 @@ class PesertaController extends Controller
         $data = [
             "nama" => $r->nama,
             "nama_pendamping" => $r->pendamping,
+            "nama_toko" => $r->toko,
             "no_wa" => $r->wa,
-            "email" => $r->email,
-            "nama_md" => $r->md
+            "email" => $r->email
         ];
 
         $rules = [
             'nama' => 'required|string|max:255',
             'nama_pendamping' => 'required|string|max:255',
             'no_wa' => 'required|string|max:255|unique:pesertas',
-            'email' => 'required|email|unique:pesertas',
-            'nama_md' => 'required|string|max:255',
+            'email' => 'required|email|unique:pesertas'
         ];
 
         $validator = Validator::make($data, $rules, $messages);
@@ -167,17 +166,17 @@ class PesertaController extends Controller
         $data = [
             "nama" => $r->nama,
             "nama_pendamping" => $r->pendamping,
+            "nama_toko" => $r->nama_toko,
             "no_wa" => $r->wa,
             "email" => $r->email,
-            "nama_md" => $r->md
         ];
 
         $rules = [
             'nama' => 'required|string|max:255',
             'nama_pendamping' => 'required|string|max:255',
+            'nama_toko' => 'required|string|max:255',
             'no_wa' => 'required|string|max:255|unique:pesertas,no_wa,'.$r->id,
             'email' => 'required|email|unique:pesertas,email,'.$r->id,
-            'nama_md' => 'required|string|max:255',
         ];
 
         $validator = Validator::make($data, $rules, $messages);
@@ -195,6 +194,7 @@ class PesertaController extends Controller
             if($data){
                 $data->nama = $r->nama;
                 $data->nama_pendamping = $r->pendamping;
+                $data->nama_toko = $r->nama_toko;
                 $data->no_wa = $r->wa;
                 $data->email = $r->email;
                 $data->nama_md = $r->md;
@@ -254,13 +254,23 @@ class PesertaController extends Controller
             $data = Peserta::where('id', $r->id)->first();
 
             if($data){
-                if ($r->file('qrcode')) {
+                if(!$r->file('idcard')){
+                    return response()->json([
+                        'status' => 0,
+                        'message' => "Data tidak ditemukan"
+                    ]);
+                }
+                if ($r->file('qrcode') && $r->file('idcard')) {
                     $image = $r->file('qrcode');
-                    $fileName = time() . '.' . $image->getClientOriginalExtension();
+                    $fileName = time() . 'qrcode.' . $image->getClientOriginalExtension();
 
+                    $image2 = $r->file('idcard');
+                    $fileName2 = time() . 'idcard.' . $image->getClientOriginalExtension();
 
                     $image->storeAs('qrcode/', $fileName, 'public');
+                    $image2->storeAs('idcard/', $fileName2, 'public');
                     $data->qr = $fileName;
+                    $data->idcard = $fileName2;
                     $data->save();
 
                     return response()->json([
@@ -268,6 +278,29 @@ class PesertaController extends Controller
                         'data' => $data
                     ]);
                 }
+            }
+
+            return response()->json([
+                'status' => 0,
+                'message' => "Data tidak ditemukan"
+            ]);
+        }catch(Exception $e){
+            return response()->json([
+                'status' => 0,
+                'message' => $e->getMessage()
+            ]);
+        }
+    }
+
+    public function loadData(){
+        try{
+            $data = Peserta::all();
+
+            if($data){
+                return response()->json([
+                    'status' => 1,
+                    'data' => $data
+                ]);
             }
 
             return response()->json([

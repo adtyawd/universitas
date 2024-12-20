@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>SIPRENT</title>
+    <title>Data Universitas</title>
     <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
     <!-- Bootstrap -->
     <link href="{{ asset('landing_page/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -94,15 +94,8 @@
                                 </button>
                                 <ul class="navbar-nav">
                                     <li class="nav-item active"><a class="nav-link" href="#home">Home</a></li>
-                                    <li class="nav-item">
-                                        <a class="nav-link smoothscroll" href="#rundown">Rundown</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link smoothscroll text-danger" href="/daftar">Daftar</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link smoothscroll" href="#packages">Foto Event</a>
-                                    </li>
+
+
                                     <li class="nav-item">
                                         <a class="nav-link smoothscroll" href="/login">Login</a>
                                     </li>
@@ -122,296 +115,18 @@
             <ul>
                 <li data-slotamount="7" data-transition="3dcurtain-horizontal" data-masterspeed="1000"
                     data-saveperformance="on">
-                    <img alt="" alt="" src="{{ asset('own_assets/images/homepage.jpeg') }}"
-                        data-lazyload="{{ asset('own_assets/images/homepage.jpeg') }}">
-                </li>
-                <li data-slotamount="7" data-transition="3dcurtain-horizontal" data-masterspeed="1000"
-                    data-saveperformance="on">
-                    <img alt="" alt="" src="{{ asset('own_assets/images/2.jpg') }}"
-                        data-lazyload="{{ asset('own_assets/images/2.jpg') }}">
-                </li>
-                <li data-slotamount="7" data-transition="3dcurtain-horizontal" data-masterspeed="1000"
-                    data-saveperformance="on">
-                    <img alt="" alt="" src="{{ asset('own_assets/images/3.jpg') }}"
-                        data-lazyload="{{ asset('own_assets/images/3.jpg') }}">
+                    <img alt="" alt="" src="{{ asset('own_assets/images/homepage.jpg') }}"
+                        data-lazyload="{{ asset('own_assets/images/homepage.jpg') }}">
                 </li>
             </ul>
         </div>
     </div>
     <!-- Revolution slider end -->
     <!-- slider Form start -->
-    <div class="sliderForm-wrap" id="rundown">
-        <div class="container">
-            <div class="item-search-tabs travel-content">
-                <div class="item-search-menu">
-                    <ul class="nav">
-                        <li>
-                            <a class="active" data-toggle="tab" href="#tab1" style="font-weight: 900">Rundown
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="tab-content">
-                    <div class="tab-pane active" id="tab1">
-                        <div class="table-responsive">
-                            <table class="datatable_rundownPertama table w-100">
-                                <thead>
-                                    <tr>
-                                        <th></th>
-                                        <th></th>
-                                        <th>No.</th>
-                                        <th>Jam</th>
-                                        <th>Uraian Kegiatan</th>
-                                        <th>Keterangan Kegiatan</th>
-                                    </tr>
-                                </thead>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+
     <!-- slider end -->
     <!--Properties Start-->
-    <div class="property-wrap wow fadeInUp" id="places">
-        <div class="container">
-            <div class="title">
-                <h1>Daftar Registrasi Panitia dan Peserta <br><small><small>Kegiatan Koordinasi Penguatan Tatakelola UIN
-                            Sumatera Utara Medan menuju Smart Islamic University Unggul</small></small>
-                </h1>
-            </div>
-            <!--Row Start-->
-            <div class="col-md-">
-                <div class="table-responsive">
-                    <table class="datatable_registrasi table">
-                        <thead>
-                            <tr>
-                                <th></th>
-                                <th></th>
-                                <th>No.</th>
-                                <th>Peserta</th>
-                                <th>Golongan</th>
-                                <th>Jabatan</th>
-                                <th>Status</th>
-                                <th>Status Registrasi</th>
-                            </tr>
-                        </thead>
-                    </table>
-                </div>
-            </div>
-            <!--Row End-->
-        </div>
-    </div>
-    <!--Properties End-->
-    <!--service start-->
-    <!-- Service Start-->
-    <div class="service-wrap" id="materi">
-        <div class="container-fluid">
-            <div class="container">
-                <div class="title">
-                    <h1>Informasi Dokumen Hasil Kegiatan <br><small><small>Kegiatan Koordinasi Penguatan Tatakelola UIN
-                                Sumatera Utara
-                                Medan menuju Smart Islamic University Unggul</small></small>
-                    </h1>
-                </div>
-                <!--Row Start-->
-                <div class="col-md-">
-                    <div class="table-responsive">
-                        <table class="datatable_dokumen table">
-                            <thead>
-                                <tr>
-                                    <th></th>
-                                    <th></th>
-                                    <th>No.</th>
-                                    <th>Nama Dokumen</th>
-                                    <th>File Dokumen</th>
-                                </tr>
-                            </thead>
-                        </table>
-                    </div>
-                </div>
-                <!--Row End-->
-            </div>
-        </div>
-    </div>
-    <!-- Service End -->
-    <!-- Service Start-->
-    <div class="service-wrap" id="services">
-        <div class="container-fluid">
-            <div class="container">
-                <div class="title">
-                    <h1>Daftar Narasumber <br><small><small>Kegiatan Koordinasi Penguatan Tatakelola UIN Sumatera Utara
-                                Medan menuju Smart Islamic University Unggul</small></small>
-                    </h1>
-                </div>
-                <!--Row Start-->
-                <div class="col-md-">
-                    <div class="table-responsive">
 
-                        <table class="datatable_narasumber table">
-                            <thead>
-                                <tr>
-                                    <th></th>
-                                    <th></th>
-                                    <th>No.</th>
-                                    <th>Peserta</th>
-                                    <th>Jabatan</th>
-                                    <th>Satuan Kerja</th>
-                                </tr>
-                            </thead>
-                        </table>
-                    </div>
-                </div>
-                <!--Row End-->
-            </div>
-        </div>
-    </div>
-    <!-- Service End -->
-
-    <!-- Service Start-->
-    <div class="service-wrap" id="absensi">
-        <div class="container-fluid">
-            <div class="container">
-                <div class="title">
-                    <h1>Absensi Panitia dan Peserta <br><small><small>Kegiatan Koordinasi Penguatan Tatakelola UIN
-                                Sumatera Utara
-                                Medan menuju Smart Islamic University Unggul</small></small>
-                    </h1>
-                </div>
-                <!--Row Start-->
-                <div class="col-md-">
-                    <div class="item-search-tabs travel-content">
-                        <div class="item-search-menu">
-                            <ul class="nav">
-                                <li>
-                                    <a class="active" data-toggle="tab" href="#absensi1"
-                                        style="font-weight: 900;color: #000">Hari
-                                        Pertama
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="" data-toggle="tab" href="#absensi2"
-                                        style="font-weight: 900;color: #000">Hari
-                                        Kedua
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="" data-toggle="tab" href="#absensi3"
-                                        style="font-weight: 900;color: #000">Hari
-                                        Ketiga
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="tab-content">
-                            <div class="tab-pane active" id="absensi1">
-                                <div class="search-background">
-                                    <div class="form row no-gutters">
-                                        <div class="table-responsive">
-                                            <table class="datatable_abnsensiPertama table w-100">
-                                                <thead>
-                                                    <tr>
-                                                        <th></th>
-                                                        <th></th>
-                                                        <th>No.</th>
-                                                        <th>Sesi</th>
-                                                        <th>Nama</th>
-                                                        <th>NIP</th>
-                                                        <th>Golongan</th>
-                                                        <th>Jabatan</th>
-                                                        <th>Status</th>
-                                                        <th>Waktu</th>
-                                                        <th>Kehadiran</th>
-                                                    </tr>
-                                                </thead>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="tab-pane" id="absensi2">
-                                <div class="search-background">
-                                    <div class="form row no-gutters">
-                                        <div class="table-responsive">
-                                            <table class="datatable_abnsensiKedua table w-100">
-                                                <thead>
-                                                    <tr>
-                                                        <th></th>
-                                                        <th></th>
-                                                        <th>No.</th>
-                                                        <th>Sesi</th>
-                                                        <th>Nama</th>
-                                                        <th>NIP</th>
-                                                        <th>Golongan</th>
-                                                        <th>Jabatan</th>
-                                                        <th>Status</th>
-                                                        <th>Waktu</th>
-                                                        <th>Kehadiran</th>
-                                                    </tr>
-                                                </thead>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="tab-pane" id="absensi3">
-                                <div class="search-background">
-                                    <div class="form row no-gutters">
-                                        <div class="table-responsive">
-                                            <table class="datatable_abnsensiKetiga table w-100">
-                                                <thead>
-                                                    <tr>
-                                                        <th></th>
-                                                        <th></th>
-                                                        <th>No.</th>
-                                                        <th>Sesi</th>
-                                                        <th>Nama</th>
-                                                        <th>NIP</th>
-                                                        <th>Golongan</th>
-                                                        <th>Jabatan</th>
-                                                        <th>Status</th>
-                                                        <th>Waktu</th>
-                                                        <th>Kehadiran</th>
-                                                    </tr>
-                                                </thead>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--Row End-->
-            </div>
-        </div>
-    </div>
-    <!-- Service End -->
-
-    <!--Package Start-->
-    <div class="package-wrap" id="packages">
-        <div class="container">
-            <div class="title" style="margin-bottom: 0">
-                <h1 style="color: #071c55;margin-bottom: 0">Foto Event <br><small><small>Kegiatan Koordinasi Penguatan
-                            Tatakelola
-                            UIN Sumatera Utara
-                            Medan menuju Smart Islamic University Unggul</small></small>
-                </h1>
-            </div>
-            <ul class="owl-carousel placesWrp" style="margin-top: 0;margin-bottom: 50px">
-                {{-- @foreach ($foto as $item)
-                    <li class="item">
-                        <div class="property_box wow fadeInUp" style="width: 520px;height: 300px;">
-                            <div class="propertyImg"><img alt=""
-                                    src="{{ Storage::url('foto/' . $item->file_foto) }}"></div>
-                        </div>
-                    </li>
-                @endforeach --}}
-            </ul>
-        </div>
-    </div>
-    <!--Package End-->
 
     <!--page scroll start-->
     <div class="page-scroll scrollToTop">
@@ -450,6 +165,320 @@
 
     <script>
         const FOTO_PEGAWAI = $("meta[name='public-path']").attr('content');
+        let dt_basic;
+        let dt_basic2;
+        $(function() {
+            var dt_basic_table = $('.datatable_registrasi');
+
+            if (dt_basic_table.length) {
+                dt_basic = dt_basic_table.DataTable({
+                    ajax: '/daftar-peserta/load-data',
+                    columns: [{
+                            data: ''
+                        },
+                        {
+                            data: null,
+                            render: function(data, type, full, meta) {
+                                return meta.row += 1;
+                            }
+                        },
+                        {
+                            data: 'id'
+                        },
+                        {
+                            data: 'nama',
+                        },
+                        {
+                            data: 'nama_pendamping',
+                        },
+                        {
+                            data: null,
+                            render:function(data, type, full, meta){
+                                if(data.status_daftar){
+                                    return 'Hadir'
+                                }else{
+                                    return ``
+                                }
+                            }
+                        },
+                        // {
+                        //     data: null,
+                        //     render:function(data, type, full, meta){
+                        //         if(data.hadir_1 != ''){
+                        //             return `
+                    //                 <b>${data.hadir_1 ? 'Hadir' : 'Tidak Hadir'}</b> <br> (${data.waktu_1})
+                    //             `
+                        //         }else{
+                        //             return ``
+                        //         }
+                        //     }
+                        // },
+                        // {
+                        //     data: null,
+                        //     render:function(data, type, full, meta){
+                        //         if(data.hadir_2 != ''){
+                        //             return `
+                    //                 <b>${data.hadir_2 ? 'Hadir' : 'Tidak Hadir'}</b> <br> (${data.waktu_2})
+                    //             `
+                        //         }else{
+                        //             return ``
+                        //         }
+                        //     }
+                        // },
+                        // {
+                        //     data: null,
+                        //     render:function(data, type, full, meta){
+                        //         if(data.hadir_3 != ''){
+                        //             return `
+                    //                 <b>${data.hadir_3 ? 'Hadir' : 'Tidak Hadir'}</b> <br> (${data.waktu_3})
+                    //             `
+                        //         }else{
+                        //             return ``
+                        //         }
+                        //     }
+                        // },
+                    ],
+                    columnDefs: [{
+
+                            orderable: false,
+                            searchable: false,
+                            responsivePriority: 2,
+                            targets: 0,
+                            render: function(data, type, full, meta) {
+                                return '';
+                            }
+                        },
+                        {
+                            targets: 1,
+                            searchable: false,
+                            visible: false,
+                        },
+                        {
+                            targets: 3,
+                            searchable: true,
+                            visible: true,
+                            width: 250,
+                        },
+                    ],
+                    initComplete: function() {
+                        this.api().columns().every(function() {
+                            var column = this;
+                            if (column.index() === 4) {
+                                $('.filter-tps').on('input', function() {
+                                    column.search(this.value).draw();
+                                });
+                            }
+                            if (column.index() === 5) {
+                                $('.filter-kelurahan').on('input', function() {
+                                    column.search(this.value).draw();
+                                });
+                            }
+                            if (column.index() === 6) {
+                                $('.filter-kecamatan').on('input', function() {
+                                    column.search(this.value).draw();
+                                });
+                            }
+                            if (column.index() === 7) {
+                                $('.filter-kabupaten').on('input', function() {
+                                    column.search(this.value).draw();
+                                });
+                            }
+                            if (column.index() === 8) {
+                                $('.filter-regional').on('input', function() {
+                                    column.search(this.value).draw();
+                                });
+                            }
+                        });
+                    },
+                    order: [
+                        [2, 'asc']
+                    ],
+                    //   dom: '<"card-header flex-column flex-md-row"<"head-label text-center"><"dt-action-buttons text-end pt-3 pt-md-0"B>><"row"<"col-sm-12 col-md-6"l><"col-sm-12 col-md-6 d-flex justify-content-center justify-content-md-end"f>>t<"row"<"col-sm-12 col-md-6"i><"col-sm-12 col-md-6"p>>',
+                    displayLength: 5,
+                    lengthMenu: [10, 25, 50, 75, 100],
+                    buttons: [{
+                            extend: 'collection',
+                            className: 'btn btn-label-primary dropdown-toggle me-2',
+                            text: '<i class="ti ti-file-export me-sm-1"></i> <span class="d-none d-sm-inline-block">Export</span>',
+                            buttons: [{
+                                    extend: 'print',
+                                    text: '<i class="ti ti-printer me-1" ></i>Print',
+                                    className: 'dropdown-item',
+                                    exportOptions: {
+                                        columns: [3, 4, 5, 6, 7],
+                                        // prevent avatar to be display
+                                        format: {
+                                            body: function(inner, coldex, rowdex) {
+                                                if (inner.length <= 0) return inner;
+                                                var el = $.parseHTML(inner);
+                                                var result = '';
+                                                $.each(el, function(index, item) {
+                                                    if (item.classList !== undefined &&
+                                                        item.classList.contains(
+                                                            'user-name')) {
+                                                        result = result + item.lastChild
+                                                            .firstChild.textContent;
+                                                    } else if (item.innerText ===
+                                                        undefined) {
+                                                        result = result + item
+                                                            .textContent;
+                                                    } else result = result + item
+                                                        .innerText;
+                                                });
+                                                return result;
+                                            }
+                                        }
+                                    },
+                                    customize: function(win) {
+                                        //customize print view for dark
+                                        $(win.document.body)
+                                            .css('color', config.colors.headingColor)
+                                            .css('border-color', config.colors.borderColor)
+                                            .css('background-color', config.colors.bodyBg);
+                                        $(win.document.body)
+                                            .find('table')
+                                            .addClass('compact')
+                                            .css('color', 'inherit')
+                                            .css('border-color', 'inherit')
+                                            .css('background-color', 'inherit');
+                                    }
+                                },
+                                {
+                                    extend: 'csv',
+                                    text: '<i class="ti ti-file-text me-1" ></i>Csv',
+                                    className: 'dropdown-item',
+                                    exportOptions: {
+                                        columns: [3, 4, 5, 6, 7],
+                                        // prevent avatar to be display
+                                        format: {
+                                            body: function(inner, coldex, rowdex) {
+                                                if (inner.length <= 0) return inner;
+                                                var el = $.parseHTML(inner);
+                                                var result = '';
+                                                $.each(el, function(index, item) {
+                                                    if (item.classList !== undefined &&
+                                                        item.classList.contains(
+                                                            'user-name')) {
+                                                        result = result + item.lastChild
+                                                            .firstChild.textContent;
+                                                    } else if (item.innerText ===
+                                                        undefined) {
+                                                        result = result + item
+                                                            .textContent;
+                                                    } else result = result + item
+                                                        .innerText;
+                                                });
+                                                return result;
+                                            }
+                                        }
+                                    }
+                                },
+                                {
+                                    extend: 'excel',
+                                    text: '<i class="ti ti-file-spreadsheet me-1"></i>Excel',
+                                    className: 'dropdown-item',
+                                    exportOptions: {
+                                        columns: [3, 4, 5, 6, 7],
+                                        // prevent avatar to be display
+                                        format: {
+                                            body: function(inner, coldex, rowdex) {
+                                                if (inner.length <= 0) return inner;
+                                                var el = $.parseHTML(inner);
+                                                var result = '';
+                                                $.each(el, function(index, item) {
+                                                    if (item.classList !== undefined &&
+                                                        item.classList.contains(
+                                                            'user-name')) {
+                                                        result = result + item.lastChild
+                                                            .firstChild.textContent;
+                                                    } else if (item.innerText ===
+                                                        undefined) {
+                                                        result = result + item
+                                                            .textContent;
+                                                    } else result = result + item
+                                                        .innerText;
+                                                });
+                                                return result;
+                                            }
+                                        }
+                                    }
+                                },
+                                {
+                                    extend: 'pdf',
+                                    text: '<i class="ti ti-file-description me-1"></i>Pdf',
+                                    className: 'dropdown-item',
+                                    exportOptions: {
+                                        columns: [2, 3],
+                                        // prevent avatar to be display
+                                        format: {
+                                            body: function(inner, coldex, rowdex) {
+                                                if (inner.length <= 0) return inner;
+                                                var el = $.parseHTML(inner);
+                                                var result = '';
+                                                $.each(el, function(index, item) {
+                                                    if (item.classList !== undefined &&
+                                                        item.classList.contains(
+                                                            'user-name')) {
+                                                        result = result + item.lastChild
+                                                            .firstChild.textContent;
+                                                    } else if (item.innerText ===
+                                                        undefined) {
+                                                        result = result + item
+                                                            .textContent;
+                                                    } else result = result + item
+                                                        .innerText;
+                                                });
+                                                return result;
+                                            }
+                                        }
+                                    }
+                                },
+                                {
+                                    extend: 'copy',
+                                    text: '<i class="ti ti-copy me-1" ></i>Copy',
+                                    className: 'dropdown-item',
+                                    exportOptions: {
+                                        columns: [3, 4, 5, 6, 7],
+                                        // prevent avatar to be display
+                                        format: {
+                                            body: function(inner, coldex, rowdex) {
+                                                if (inner.length <= 0) return inner;
+                                                var el = $.parseHTML(inner);
+                                                var result = '';
+                                                $.each(el, function(index, item) {
+                                                    if (item.classList !== undefined &&
+                                                        item.classList.contains(
+                                                            'user-name')) {
+                                                        result = result + item.lastChild
+                                                            .firstChild.textContent;
+                                                    } else if (item.innerText ===
+                                                        undefined) {
+                                                        result = result + item
+                                                            .textContent;
+                                                    } else result = result + item
+                                                        .innerText;
+                                                });
+                                                return result;
+                                            }
+                                        }
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            text: '<i class="ti ti-plus me-sm-1"></i> <span class="d-none d-sm-inline-block">Tambah Data Baru</span>',
+                            className: 'create-new btn btn-primary'
+                        }
+                    ],
+                });
+
+                dt_basic.on('draw.dt', function() {
+                    dt_basic.column(2).nodes().each(function(cell, i) {
+                        cell.innerHTML = i + 1;
+                    });
+                });
+            }
+        });
         // let dt_basic;
         // let dt_basic2;
         // $(function() {

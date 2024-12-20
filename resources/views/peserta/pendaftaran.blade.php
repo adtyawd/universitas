@@ -20,6 +20,35 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('template_assets/assets/icon/icofont/css/icofont.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('template_assets/assets/css/style.css') }}">
         <meta name="csrf-token" content="{{ csrf_token() }}">
+        <meta name="public-path" content="{{ public_path() }}">
+        <style>
+            .container-1 {
+                display: none;
+                position: relative;
+                width: 100%;
+            }
+
+            .logo {
+                width: 100%;
+                height: auto;
+            }
+
+            .qr-code {
+                position: absolute;
+                top: 37%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 170px;
+                height: 170px;
+            }
+
+            .child-container-1 {
+                position: absolute;
+                top: 63%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+        </style>
     </head>
     <body class="fix-menu">
         <div class="theme-loader">
@@ -70,44 +99,55 @@
                             </div>
                             <div class="auth-box card">
                                 <div class="card-block">
-                                    <div class="row m-b-20">
-                                        <div class="col-md-12">
-                                            <h3 class="text-center">Pendaftaran</h3>
+                                    <div class="container-1">
+                                        <img src="{{ asset('own_assets/images/id_card.jpg') }}" width="100%" alt="" class="logo">
+                                        <img id="qr_code" class="qr-code">
+                                        <div class="child-container-1">
+                                            <h4 id="nama_peserta" class="text-center" style="margin-top:-20px"></h4>
+                                            {{-- <hr style="margin-top: -10px"> --}}
+                                            {{-- <h4 id="nama_toko" style="margin-top: -10px" class="d-flex justify-content-center"></h4> --}}
                                         </div>
                                     </div>
-                                    <div class="form-group form-primary">
-                                        <label for="nama" class="form-label">Nama Peserta :</label>
-                                        <input type="text" id="nama" name="nama" class="form-control" required placeholder="Masukkan Nama Peserta" required>
-                                        <span class="form-bar"></span>
-                                    </div>
+                                    <div class="container-2">
+                                        <div class="row m-b-20">
+                                            <div class="col-md-12">
+                                                <h3 class="text-center">Pendaftaran</h3>
+                                            </div>
+                                        </div>
+                                        <div class="form-group form-primary">
+                                            <label for="nama" class="form-label">Nama 1 :</label>
+                                            <input type="text" id="nama" name="nama" class="form-control" required placeholder="Masukkan Nama 1" required>
+                                            <span class="form-bar"></span>
+                                        </div>
 
-                                    <div class="form-group form-primary">
-                                        <label for="pendamping" class="form-label">Nama Pendamping :</label>
-                                        <input type="text" id="pendamping" name="pendamping" class="form-control" required placeholder="Masukkan Nama Pendamping" required>
-                                        <span class="form-bar"></span>
-                                    </div>
+                                        <div class="form-group form-primary">
+                                            <label for="pendamping" class="form-label">Nama 2 :</label>
+                                            <input type="text" id="pendamping" name="pendamping" class="form-control" required placeholder="Masukkan Nama 2" required>
+                                            <span class="form-bar"></span>
+                                        </div>
 
-                                    <div class="form-group form-primary">
-                                        <label for="wa" class="form-label">Nomor Whatsapp :</label>
-                                        <input type="text" id="wa" name="wa" class="form-control" required placeholder="Masukkan Nomor Whatsapp" required oninput="this.value = this.value.replace(/[^0-9]/g, '').substring(0, 15)">
-                                        <span class="form-bar"></span>
-                                    </div>
+                                        <div class="form-group form-primary">
+                                            <label for="toko" class="form-label">Nama Toko :</label>
+                                            <input type="text" id="toko" name="toko" class="form-control" required placeholder="Masukkan Nama Toko" required>
+                                            <span class="form-bar"></span>
+                                        </div>
 
-                                    <div class="form-group form-primary">
-                                        <label for="email" class="form-label">Email :</label>
-                                        <input type="email" id="email" name="email" class="form-control" required placeholder="Masukkan Email" required>
-                                        <span class="form-bar"></span>
-                                    </div>
+                                        <div class="form-group form-primary">
+                                            <label for="wa" class="form-label">Nomor Whatsapp :</label>
+                                            <input type="text" id="wa" name="wa" class="form-control" required placeholder="Masukkan Nomor Whatsapp" required oninput="this.value = this.value.replace(/[^0-9]/g, '').substring(0, 15)">
+                                            <span class="form-bar"></span>
+                                        </div>
 
-                                    <div class="form-group form-primary">
-                                        <label for="md" class="form-label">Nama MD :</label>
-                                        <input type="text" id="md" name="md" class="form-control" required placeholder="Masukkan Nama MD" required>
-                                        <span class="form-bar"></span>
-                                    </div>
+                                        <div class="form-group form-primary">
+                                            <label for="email" class="form-label">Email :</label>
+                                            <input type="email" id="email" name="email" class="form-control" required placeholder="Masukkan Email" required>
+                                            <span class="form-bar"></span>
+                                        </div>
 
-                                    <div class="row m-t-30">
-                                        <div class="col-md-12">
-                                            <button type="button" id="store" style="background-color: red" class="btn btn-primary btn-md btn-block waves-effect waves-light text-center m-b-20">Daftar</button>
+                                        <div class="row m-t-30">
+                                            <div class="col-md-12">
+                                                <button type="button" id="store" style="background-color: red" class="btn btn-primary btn-md btn-block waves-effect waves-light text-center m-b-20">Daftar</button>
+                                            </div>
                                         </div>
                                     </div>
                                     <hr />
@@ -189,6 +229,7 @@
         <script type="text/javascript" src="{{ asset('template_assets/assets/js/common-pages.js') }}"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+        <script src="{{ asset('own_assets/scripts/html2canvas.min.js') }}"></script>
         <script src="{{ asset('own_assets/scripts/pages/peserta.js') }}"></script>
     </body>
     <!-- Mirrored from demo.dashboardpack.com/adminty-html/default/auth-normal-sign-in.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 04 Jan 2024 05:00:01 GMT -->
