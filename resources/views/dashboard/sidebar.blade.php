@@ -21,7 +21,7 @@
             </a>
           </li>
           <li class>
-            <a href="/daftar-jlhmhsprestasi">
+            <a href="/daftar-jlhmhs-berprestasi">
               <span class="pcoded-mtext">Jumlah Mahasiswa Prestasi</span>
             </a>
           </li>

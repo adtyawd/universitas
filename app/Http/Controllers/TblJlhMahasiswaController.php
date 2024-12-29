@@ -2,14 +2,36 @@
 
 namespace App\Http\Controllers;
 
-use Exception;
-use App\Models\User;
+use App\Models\tbl_jlh_mahasiswa;
 use Illuminate\Http\Request;
+use Exception;
 use Illuminate\Support\Facades\Validator;
 
-class AdminController extends Controller
-{
 
+class TblJlhMahasiswaController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     */
+    public function index(){
+        $tbl_jlh_mahasiswa = tbl_jlh_mahasiswa::select('idmhs', 'tgl_transaksi', 'fakultas', 'jurusan', 'prodi', 'kategori', 'jumlah')->get();
+
+        return view('admin.jml_mhsw', [
+            'tbl_jlh_mahasiswa' => $tbl_jlh_mahasiswa,
+        ]);
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
     public function store(Request $r)
     {
         $messages = [
@@ -23,17 +45,21 @@ class AdminController extends Controller
         ];
 
         $data = [
-            "name" => $r->nama,
-            "username" => $r->username,
-            "password" => $r->password,
-            "role" => $r->role
+            "tgl_transaksi" => $r->tgl_transaksi,
+            "fakultas" => $r->fakultas,
+            "jurusan" => $r->jurusan,
+            "prodi" => $r->prodi,
+            "kategori" => $r->kategori,
+            "jumlah" => $r->jumlah
         ];
 
         $rules = [
-            'name' => 'required|string|max:255',
-            'username' => 'required|string|max:255|unique:users',
-            'password' => 'required|string|max:255',
-            'role' => 'required|not_in:0',
+            'tgl_transaksi' => 'required|string|max:255',
+            'fakultas' => 'required|string|max:255',
+            'jurusan' => 'required|string|max:255',
+            'prodi' => 'required|string|max:255',
+            'kategori' => 'required|string|max:255',
+            'jumlah' => 'required|integer|max:255',
         ];
 
         $validator = Validator::make($data, $rules, $messages);
@@ -46,11 +72,14 @@ class AdminController extends Controller
         }
 
         try {
-            $data = User::create([
+            $data = tbl_jlh_mahasiswa::create([
                 "name" => $r->nama,
-                "username" => $r->username,
-                "password" => bcrypt($r->password),
-                "role" => $r->role
+                "tgl_transaksi" => $r->tgl_transaksi,
+                "fakultas" => $r->fakultas,
+                "jurusan" => $r->jurusan,
+                "prodi" => $r->prodi,
+                "kategori" => $r->kategori,
+                "jumlah" => $r->jumlah,
             ]);
 
             if($data){
@@ -72,22 +101,27 @@ class AdminController extends Controller
         }
     }
 
-    public function index(){
-        $users = User::select('id', 'name', 'username', 'role')->get();
-
-        return view('admin.index', [
-            'users' => $users,
-        ]);
+    /**
+     * Display the specified resource.
+     */
+    public function show(tbl_jlh_mahasiswa $tbl_jlh_mahasiswa)
+    {
+        //
     }
 
-    public function edit(Request $r){
-        try{
-            $user = User::where('id', $r->id)->first();
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(Request $r)
+    {
 
-            if($user){
+        try {
+            $tbl_jlh_mahasiswa = tbl_jlh_mahasiswa::where('idmhs', $r->idmhs)->first();
+
+            if ($tbl_jlh_mahasiswa) {
                 return response()->json([
                     'status' => 1,
-                    'data' => $user
+                    'data' => $tbl_jlh_mahasiswa
                 ]);
             }
 
@@ -95,7 +129,7 @@ class AdminController extends Controller
                 'status' => 0,
                 'message' => "Data tidak ditemukan"
             ]);
-        }catch(Exception $e){
+        } catch (Exception $e) {
             return response()->json([
                 'status' => 0,
                 'message' => $e->getMessage()
@@ -103,7 +137,12 @@ class AdminController extends Controller
         }
     }
 
-    public function update(Request $r){
+
+    /**
+     * Update the specified resource in storage.
+     */
+
+     public function update(Request $r){
         $messages = [
             'required' => 'Kolom :attribute harus diisikan',
             'unique' => ':attribute sudah terdaftar',
@@ -115,15 +154,21 @@ class AdminController extends Controller
         ];
 
         $data = [
-            "name" => $r->name,
-            "username" => $r->username,
-            "role" => $r->role
+            "tgl_transaksi" => $r->tgl_transaksi,
+            "fakultas" => $r->fakultas,
+            "jurusan" => $r->jurusan,
+            "prodi" => $r->prodi,
+            "kategori" => $r->kategori,
+            "jumlah" => $r->jumlah
         ];
 
         $rules = [
-            'name' => 'required|string|max:255',
-            'username' => 'required|string|unique:users,username,'.$r->id,
-            'role' => 'required|not_in:0',
+            'tgl_transaksi' => 'required|string|max:255',
+            'fakultas' => 'required|string|max:255',
+            'jurusan' => 'required|string|max:255',
+            'prodi' => 'required|string|max:255',
+            'kategori' => 'required|string|max:255',
+            'jumlah' => 'required|integer|max:255',
         ];
 
         $validator = Validator::make($data, $rules, $messages);
@@ -136,12 +181,15 @@ class AdminController extends Controller
         }
 
         try{
-            $data = User::where('id', $r->id)->first();
+            $data = tbl_jlh_mahasiswa::where('idmhs', $r->idmhs)->first();
 
             if($data){
-                $data->name = $r->name;
-                $data->username = $r->username;
-                $data->role = $r->role;
+                $data->tgl_transaksi = $r->tgl_transaksi;
+                $data->fakultas = $r->fakultas;
+                $data->jurusan = $r->jurusan;
+                $data->prodi = $r->prodi;
+                $data->kategori = $r->kategori;
+                $data->jumlah = $r->jumlah;
                 $data->save();
 
                 return response()->json([
@@ -161,64 +209,20 @@ class AdminController extends Controller
         }
     }
 
-    public function updatePassword(Request $r){
-        $messages = [
-            'required' => 'Kolom :attribute harus diisikan',
-            'unique' => ':attribute sudah terdaftar',
-            'string' => ':attribute harus berupa teks',
-            'size' => ':attribute harus berukuran :size karakter',
-            'between' => ':attribute harus di antara :min dan :max karakter',
-            'not_in' => ':attribute Harus Dipilih',
-            'email' => ':attribute Format Email Salah'
-        ];
-
-        $data = [
-            "password" => $r->password,
-        ];
-
-        $rules = [
-            'password' => 'required|string|max:255'
-        ];
-
-        $validator = Validator::make($data, $rules, $messages);
-
-        if ($validator->fails()) {
-            return response()->json([
-                'status' => false,
-                'message' => implode(', ', $validator->errors()->all())
-            ]);
-        }
-
-        try{
-            $data = User::where('id', $r->id)->first();
-
-            if($data){
-                $data->password = bcrypt($r->password);
-                $data->save();
-
-                return response()->json([
-                    'status' => 1
-                ]);
-            }
-
-            return response()->json([
-                'status' => 0,
-                'message' => "Data tidak ditemukan"
-            ]);
-        }catch(Exception $e){
-            return response()->json([
-                'status' => 0,
-                'message' => $e->getMessage()
-            ]);
-        }
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(tbl_jlh_mahasiswa $tbl_jlh_mahasiswa)
+    {
+        //
     }
 
     public function delete(Request $r){
         try{
-            $data = User::where('id', $r->id)->first();
+            $tbl_jml_mahasiswa = tbl_jlh_mahasiswa::where('idmhs', $r->idmhs)->first();
 
-            if($data){
-                $data->delete();
+            if($tbl_jml_mahasiswa){
+                $tbl_jml_mahasiswa->delete();
                 return response()->json([
                     'status' => 1,
                 ]);

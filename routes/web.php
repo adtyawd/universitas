@@ -6,6 +6,9 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\MonitorController;
 use App\Http\Controllers\PesertaController;
+use App\Http\Controllers\TblJlhMahasiswaBerprestasiController;
+use App\Http\Controllers\TblJlhMahasiswaController;
+use App\Http\Controllers\TblTenagaPendidikController;
 use App\Http\Controllers\UndianController;
 use Illuminate\Support\Facades\Route;
 
@@ -55,6 +58,24 @@ Route::middleware('auth')->group(function () {
     Route::post('/daftar-admin/update-data', [AdminController::class, 'update']);
     Route::post('/daftar-admin/update-password', [AdminController::class, 'updatePassword']);
     Route::post('/daftar-admin/delete-data', [AdminController::class, 'delete']);
+
+    Route::get('/daftar-jlhmhs', [TblJlhMahasiswaController::class, 'index']);
+    Route::post('/daftar-jlhmhs/store-admin', [TblJlhMahasiswaController::class, 'store']);
+    Route::get('/daftar-jlhmhs/edit-data', [TblJlhMahasiswaController::class, 'edit']);
+    Route::post('/daftar-jlhmhs/update-data', [TblJlhMahasiswaController::class, 'update']);
+    Route::post('/daftar-jlhmhs/delete-data', [TblJlhMahasiswaController::class, 'delete']);
+
+    Route::get('/daftar-jlhmhs-berprestasi', [TblJlhMahasiswaBerprestasiController::class, 'index']);
+    Route::post('/daftar-jlhmhs-berprestasi/store-admin', [TblJlhMahasiswaBerprestasiController::class, 'store']);
+    Route::get('/daftar-jlhmhs-berprestasi/edit-data', [TblJlhMahasiswaBerprestasiController::class, 'edit']);
+    Route::post('/daftar-jlhmhs-berprestasi/update-data', [TblJlhMahasiswaBerprestasiController::class, 'update']);
+    Route::post('/daftar-jlhmhs-berprestasi/delete-data', [TblJlhMahasiswaBerprestasiController::class, 'delete']);
+
+    Route::get('/daftar-dosen', [TblTenagaPendidikController::class, 'index']);
+    Route::post('/daftar-dosen/store-admin', [TblTenagaPendidikController::class, 'store']);
+    Route::get('/daftar-dosen/edit-data', [TblTenagaPendidikController::class, 'edit']);
+    Route::post('/daftar-dosen/update-data', [TblTenagaPendidikController::class, 'update']);
+    Route::post('/daftar-dosen/delete-data', [TblTenagaPendidikController::class, 'delete']);
 
     Route::post('/logout', [AuthController::class, 'logout']);
 });
