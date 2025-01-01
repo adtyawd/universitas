@@ -15,10 +15,11 @@ return new class extends Migration
             $table->id('idpenelitian');
             $table->date('tgl_transaksi');
             $table->string('unit', 100);
-            $table->integer('nasionali');
+            $table->integer('nasional');
             $table->integer('internasional');
             $table->integer('internasional_index');
             $table->integer('prosiding');
+            $table->integer('seminar');
             $table->string('kategori');
             $table->timestamps();
         });

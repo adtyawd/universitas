@@ -52,7 +52,7 @@
                         <div class="col-sm-12">
                             <div class="card">
                                 <div class="card-header">
-                                  <h5>Daftar Mahasiswa</h5>
+                                  <h5>Daftar Tenaga Pendidik</h5>
                                 </div>
                                 <div class="card-block">
                                   <div class="dt-responsive table-responsive">
@@ -111,7 +111,6 @@
                                                 <td>
                                                     <i class="ti-pencil text-success edit" style="font-size: 18px" data-id={{ $tbl_tenaga_pendidik->idpendidik }}></i>
                                                     <i class="ti-trash text-danger delete" style="font-size: 18px" data-id={{ $tbl_tenaga_pendidik->idpendidik }}></i>
-                                                    <i class="fa fa-shield text-secondary change-password ml-1" style="font-size: 18px; cursor: pointer" data-id={{ $tbl_tenaga_pendidik->idpendidik }}></i>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -134,7 +133,7 @@
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h4 class="modal-title">Add User</h4>
+          <h4 class="modal-title">Add Data</h4>
           <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -449,39 +448,6 @@
     </div>
 </div>
 
-{{-- modal ubah password --}}
-<div class="modal fade" id="edit-password" tabindex="-1" role="dialog">
-    <div class="modal-dialog modal-lg" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title">Ubah Password</h4>
-          <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-            <div class="card">
-                <div class="card-block">
-                    <form id="main" novalidate>
-                        <input type="hidden" name="" id="id_user_password">
-                        <div class="form-group row">
-                            <label class="col-sm-4 col-form-label">Password Baru</label>
-                            <div class="col-sm-8">
-                              <input type="password" class="form-control" name="nama" id="edit_password" placeholder="Masukkan Password Baru">
-                              <span class="messages"></span>
-                            </div>
-                        </div>
-                      </form>
-                </div>
-            </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default waves-effect close-btn" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary waves-effect waves-light" id="update_password">Save changes</button>
-        </div>
-      </div>
-    </div>
-</div>
 @endsection
 
 @section('own_js')

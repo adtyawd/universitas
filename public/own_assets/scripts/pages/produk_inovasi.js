@@ -12,62 +12,27 @@ $(document).ready(function() {
     });
 });
 
-$("#store").on("click", function () {
+$("#store").on("click", function(){
     $("#large-Modal").modal('hide');
     $.ajax({
-        url: '/daftar-dosen/store-admin',
+        url: '/daftar-inovasi/store-admin',
         method: 'POST',
         data: {
             "_token": $("meta[name='csrf-token']").attr('content'),
             "tgl_transaksi": $("#tgl_transaksi").val(),
-            "unit": $("#unit").val(),
-            "jurusan": $("#jurusan").val(),
-            "prodi": $("#prodi").val(),
-            "professor_pns": $("#professor_pns").val(),
-            "professor_non_pns": $("#professor_non_pns").val(),
-            "lektor_kepala_pns": $("#lektor_kepala_pns").val(),
-            "lektor_kepala_non_pns": $("#lektor_kepala_non_pns").val(),
-            "lektor_pns": $("#lektor_pns").val(),
-            "lektor_non_pns": $("#lektor_non_pns").val(),
-            "asisten_ahli_pns": $("#asisten_ahli_pns").val(),
-            "asisten_ahli_non_pns": $("#asisten_ahli_non_pns").val(),
-            "tenaga_pengajar_pns": $("#tenaga_pengajar_pns").val(),
-            "tenaga_pengajar_non_pns": $("#tenaga_pengajar_non_pns").val(),
-            "terkualifikasi_s3": $("#terkualifikasi_s3").val(),
-            "terkualifikasi_kompetensi_profesi": $("#terkualifikasi_kompetensi_profesi").val(),
-            "terkualifikasi_praktisi": $("#terkualifikasi_praktisi").val(),
-            "pegawai_pppk": $("#pegawai_pppk").val(),
-            "nidn": $("#nidn").val()
+            "jumlah": $("#jumlah").val()
         },
-        success: function (response) {
+        success: function(response){
             if (response.status) {
-                // Kosongkan nilai form setelah data berhasil disimpan
                 $("#tgl_transaksi").val("");
-                $("#unit").val("");
-                $("#jurusan").val("");
-                $("#prodi").val("");
-                $("#professor_pns").val("");
-                $("#professor_non_pns").val("");
-                $("#lektor_kepala_pns").val("");
-                $("#lektor_kepala_non_pns").val("");
-                $("#lektor_pns").val("");
-                $("#lektor_non_pns").val("");
-                $("#asisten_ahli_pns").val("");
-                $("#asisten_ahli_non_pns").val("");
-                $("#tenaga_pengajar_pns").val("");
-                $("#tenaga_pengajar_non_pns").val("");
-                $("#terkualifikasi_s3").val("");
-                $("#terkualifikasi_kompetensi_profesi").val("");
-                $("#terkualifikasi_praktisi").val("");
-                $("#pegawai_pppk").val("");
-                $("#nidn").val("");
+                $("#jumlah").val("");
 
                 Swal.fire({
                     title: 'Success',
-                    text: "Data berhasil ditambahkan!",
+                    text: "Pendaftaran ada berhasil!",
                     icon: 'success'
-                });
-                setTimeout(function () {
+                })
+                setInterval(function(){
                     location.reload();
                 }, 2000);
             } else {
@@ -80,66 +45,55 @@ $("#store").on("click", function () {
                     if (result.isConfirmed) {
                         $("#large-Modal").modal('show');
                     }
-                });
+                })
             }
         },
-        error: function (response) {
-            let errorMessage = response.responseJSON?.message || "Terjadi kesalahan saat mengirim data.";
+        error: function(response){
             Swal.fire({
                 title: 'Oops..',
-                text: errorMessage,
+                text: `${response.message}`,
                 icon: 'error',
                 confirmButtonText: 'Oke'
             }).then((result) => {
                 if (result.isConfirmed) {
                     $("#large-Modal").modal('show');
                 }
-            });
+            })
         }
-    });
+    })
 });
 
-
-
 $(".edit").on('click', function () {
-    let id = $(this).data('id'); // Mengambil ID dari elemen yang diklik
+    let id = $(this).data('id'); // Ambil data-id dari elemen tombol edit
+
+    if (!id) {
+        Swal.fire({
+            title: 'Error',
+            text: 'ID Produk tidak valid.',
+            icon: 'error',
+        });
+        return;
+    }
 
     $.ajax({
-        url: '/daftar-dosen/edit-data',
+        url: '/daftar-inovasi/edit-data',
         method: 'GET',
         data: {
-            "idpendidik": id // Menggunakan idpendidik sebagai parameter yang dikirim ke controller
+            "idproduk": id // Kirim idproduk ke server
         },
         success: function (response) {
             if (response.status) {
-                // Mengisi nilai dari respons ke dalam form modal edit
-                $("#idpendidik").val(response.data.idpendidik);
+                // Isi data ke form modal edit
+                $("#idproduk").val(response.data.idproduk);
                 $("#edit_tgl_transaksi").val(response.data.tgl_transaksi);
-                $("#edit_unit").val(response.data.unit);
-                $("#edit_jurusan").val(response.data.jurusan);
-                $("#edit_prodi").val(response.data.prodi);
-                $("#edit_professor_pns").val(response.data.professor_pns);
-                $("#edit_professor_non_pns").val(response.data.professor_non_pns);
-                $("#edit_lektor_kepala_pns").val(response.data.lektor_kepala_pns);
-                $("#edit_lektor_kepala_non_pns").val(response.data.lektor_kepala_non_pns);
-                $("#edit_lektor_pns").val(response.data.lektor_pns);
-                $("#edit_lektor_non_pns").val(response.data.lektor_non_pns);
-                $("#edit_asisten_ahli_pns").val(response.data.asisten_ahli_pns);
-                $("#edit_asisten_ahli_non_pns").val(response.data.asisten_ahli_non_pns);
-                $("#edit_tenaga_pengajar_pns").val(response.data.tenaga_pengajar_pns);
-                $("#edit_tenaga_pengajar_non_pns").val(response.data.tenaga_pengajar_non_pns);
-                $("#edit_terkualifikasi_s3").val(response.data.terkualifikasi_s3);
-                $("#edit_terkualifikasi_kompetensi_profesi").val(response.data.terkualifikasi_kompetensi_profesi);
-                $("#edit_terkualifikasi_praktisi").val(response.data.terkualifikasi_praktisi);
-                $("#edit_pegawai_pppk").val(response.data.pegawai_pppk);
-                $("#edit_nidn").val(response.data.nidn);
+                $("#edit_jumlah").val(response.data.jumlah);
 
-                // Menampilkan modal edit
+                // Tampilkan modal edit
                 $("#edit-Modal").modal('show');
             } else {
                 Swal.fire({
                     title: 'Oops..',
-                    text: response.message || 'Terjadi kesalahan saat mengambil data.',
+                    text: response.message || 'Data tidak ditemukan.',
                     icon: 'error',
                 });
             }
@@ -150,78 +104,64 @@ $(".edit").on('click', function () {
                 title: 'Oops..',
                 text: errorMessage,
                 icon: 'error',
-                confirmButtonText: 'Oke'
             });
         }
     });
 });
 
-$("#update").on("click", function () {
+
+
+
+$("#update").on("click", function(){
     $("#edit-Modal").modal('hide');
     $.ajax({
-        url: '/daftar-dosen/update-data',
+        url: '/daftar-inovasi/update-data',
         method: 'POST',
         data: {
             "_token": $("meta[name='csrf-token']").attr('content'),
-            "idpendidik": $("#idpendidik").val(),
+            "idproduk": $("#idproduk").val(),
             "tgl_transaksi": $("#edit_tgl_transaksi").val(),
-            "unit": $("#edit_unit").val(),
-            "jurusan": $("#edit_jurusan").val(),
-            "prodi": $("#edit_prodi").val(),
-            "professor_pns": $("#edit_professor_pns").val(),
-            "professor_non_pns": $("#edit_professor_non_pns").val(),
-            "lektor_kepala_pns": $("#edit_lektor_kepala_pns").val(),
-            "lektor_kepala_non_pns": $("#edit_lektor_kepala_non_pns").val(),
-            "lektor_pns": $("#edit_lektor_pns").val(),
-            "lektor_non_pns": $("#edit_lektor_non_pns").val(),
-            "asisten_ahli_pns": $("#edit_asisten_ahli_pns").val(),
-            "asisten_ahli_non_pns": $("#edit_asisten_ahli_non_pns").val(),
-            "tenaga_pengajar_pns": $("#edit_tenaga_pengajar_pns").val(),
-            "tenaga_pengajar_non_pns": $("#edit_tenaga_pengajar_non_pns").val(),
-            "terkualifikasi_s3": $("#edit_terkualifikasi_s3").val(),
-            "terkualifikasi_kompetensi_profesi": $("#edit_terkualifikasi_kompetensi_profesi").val(),
-            "terkualifikasi_praktisi": $("#edit_terkualifikasi_praktisi").val(),
-            "pegawai_pppk": $("#edit_pegawai_pppk").val(),
-            "nidn": $("#edit_nidn").val()
+            "jumlah": $("#edit_jumlah").val()
         },
-        success: function (response) {
+        success: function(response){
             if (response.status) {
                 Swal.fire({
                     title: 'Success',
-                    text: "Data berhasil diperbarui!",
+                    text: "Data berhasil diupdate!",
                     icon: 'success'
-                });
+                })
 
-                setTimeout(function () {
+                setTimeout(function(){
                     location.reload();
                 }, 2000);
             } else {
                 Swal.fire({
                     title: 'Oops..',
-                    text: response.message,
+                    text: `${response.message}`,
                     icon: 'error',
                     confirmButtonText: 'Oke'
                 }).then((result) => {
                     if (result.isConfirmed) {
                         $("#edit-Modal").modal('show');
                     }
-                });
-                }
-            },
-        error: function (xhr) {
+                })
+            }
+        },
+        error: function(response){
             Swal.fire({
                 title: 'Oops..',
-                text: xhr.responseJSON?.message || 'Terjadi kesalahan saat mengupdate data.',
+                text: `${response.responseJSON.message}`,
                 icon: 'error',
                 confirmButtonText: 'Oke'
             }).then((result) => {
                 if (result.isConfirmed) {
                     $("#edit-Modal").modal('show');
                 }
-            });
+            })
         }
-    });
+    })
 });
+
 
 
 
@@ -293,11 +233,11 @@ $(".delete").on("click", function () {
     }).then((result) => {
         if (result.isConfirmed) {
             $.ajax({
-                url: '/daftar-dosen/delete-data',
+                url: '/daftar-inovasi/delete-data',
                 method: 'POST',
                 data: {
                     "_token": $("meta[name='csrf-token']").attr('content'),
-                    "idpendidik": id,
+                    "idproduk": id,
                 },
                 success: function (response) {
                     if (response.status) {
@@ -309,7 +249,7 @@ $(".delete").on("click", function () {
                         setTimeout(function(){
                             location.reload();
                         }, 2000);
-                    } else {9
+                    } else {
                         Swal.fire({
                             title: 'Oops..',
                             text: `${response.message}`,

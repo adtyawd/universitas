@@ -40,7 +40,7 @@
                                     <li class="breadcrumb-item" style="float: left;">
                                         <a href="/"> <i class="feather icon-home"></i> </a>
                                     </li>
-                                    <li class="breadcrumb-item" style="float: left;"><a href="#!">Daftar Mahasiswa Berprestasu</a></li>
+                                    <li class="breadcrumb-item" style="float: left;"><a href="#!">Daftar Alumni</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -52,7 +52,7 @@
                         <div class="col-sm-12">
                             <div class="card">
                                 <div class="card-header">
-                                  <h5>Daftar Mahasiswa Berprestasi</h5>
+                                  <h5>Daftar Alumni</h5>
                                 </div>
                                 <div class="card-block">
                                   <div class="dt-responsive table-responsive">
@@ -60,35 +60,36 @@
                                       <thead>
                                         <tr>
                                             <th>No. </th>
-                                            <th>ID Prestasi</th>
+                                            <th>ID Alumni</th>
                                             <th>Tanggal Transaksi</th>
                                             <th>Fakultas</th>
                                             <th>Jurusan</th>
                                             <th>Prodi</th>
-                                            <th>Kategori</th>
-                                            <th>Bidang</th>
-                                            <th>Jumlah</th>
-                                            <th>Jenis</th>
+                                            <th>Bekerja</th>
+                                            <th>Belum Bekerja</th>
+                                            <th>Lanjut kuliah</th>
+                                            <th>Wiraswasta</th>
                                             <th>Aksi</th>
                                         </tr>
                                       </thead>
                                       <tbody>
                                         <?php $index = 1; ?>
-                                        @foreach ($tbl_jlh_mahasiswa_berprestasi as $tbl_jlh_mahasiswa_berprestasi)
+                                        @foreach ($tbl_alumni as $tbl_alumni)
                                             <tr>
                                                 <td>{{ $index++ }}</td>
-                                                <td>{{ $tbl_jlh_mahasiswa_berprestasi->idprestasi }}</td>
-                                                <td>{{ $tbl_jlh_mahasiswa_berprestasi->tgl_transaksi }}</td>
-                                                <td>{{ $tbl_jlh_mahasiswa_berprestasi->fakultas }}</td>
-                                                <td>{{ $tbl_jlh_mahasiswa_berprestasi->jurusan }}</td>
-                                                <td>{{ $tbl_jlh_mahasiswa_berprestasi->prodi }}</td>
-                                                <td>{{ $tbl_jlh_mahasiswa_berprestasi->kategori }}</td>
-                                                <td>{{ $tbl_jlh_mahasiswa_berprestasi->bidang }}</td>
-                                                <td>{{ $tbl_jlh_mahasiswa_berprestasi->jenis }}</td>
-                                                <td>{{ $tbl_jlh_mahasiswa_berprestasi->jumlah }}</td>
+                                                <td>{{ $tbl_alumni->idalumni }}</td>
+                                                <td>{{ $tbl_alumni->tgl_transaksi }}</td>
+                                                <td>{{ $tbl_alumni->fakultas }}</td>
+                                                <td>{{ $tbl_alumni->jurusan }}</td>
+                                                <td>{{ $tbl_alumni->prodi }}</td>
+                                                <td>{{ $tbl_alumni->bekerja }}</td>
+                                                <td>{{ $tbl_alumni->belum_bekerja }}</td>
+                                                <td>{{ $tbl_alumni->lanjut_kuliah }}</td>
+                                                <td>{{ $tbl_alumni->wiraswasta }}</td>
                                                 <td>
-                                                    <i class="ti-pencil text-success edit" style="font-size: 18px" data-id={{ $tbl_jlh_mahasiswa_berprestasi->idprestasi }}></i>
-                                                    <i class="ti-trash text-danger delete" style="font-size: 18px" data-id={{ $tbl_jlh_mahasiswa_berprestasi->idprestasi }}></i>
+                                                    <i class="ti-pencil text-success edit" style="font-size: 18px" data-id={{ $tbl_alumni->idalumni }}></i>
+                                                    <i class="ti-trash text-danger delete" style="font-size: 18px" data-id={{ $tbl_alumni->idalumni }}></i>
+                                                    <i class="fa fa-shield text-secondary change-password ml-1" style="font-size: 18px; cursor: pointer" data-id={{ $tbl_alumni->idalumni }}></i>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -106,12 +107,12 @@
     </div>
 </div>
 
-modal tambah data
+{{-- modal tambah data --}}
 <div class="modal fade" id="large-Modal" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h4 class="modal-title">Add User</h4>
+          <h4 class="modal-title">Add Alumnir</h4>
           <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -130,7 +131,7 @@ modal tambah data
                     <div class="form-group row">
                       <label class="col-sm-4 col-form-label">Fakultas</label>
                       <div class="col-sm-8">
-                        <input type="text" class="form-control" name="fakultas" id="fakultas" placeholder="Masukkan Fakultas">
+                        <input type="text" class="form-control" name="fakultas" id="fakultas" placeholder="Masukkan fakultas">
                         <span class="messages"></span>
                       </div>
                     </div>
@@ -144,39 +145,35 @@ modal tambah data
                     <div class="form-group row">
                         <label class="col-sm-4 col-form-label">Prodi</label>
                         <div class="col-sm-8">
-                          <input type="text" class="form-control" name="prodi" id="prodi" placeholder="Masukkan Prodi">
+                          <input type="text" class="form-control" name="prodi" id="prodi" placeholder="Masukkan prodi">
                           <span class="messages"></span>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-sm-4 col-form-label">Kategori</label>
+                        <label class="col-sm-4 col-form-label">Bekerja</label>
                         <div class="col-sm-8">
-                            <select class="form-control" name="kategori" id="kategori">
-                                <option value="0">:: Pilih Kategori ::</option>
-                                <option value="akademik">Akademik</option>
-                                <option value="nonakademik">NonAkademik</option>
-                            </select>
-                            <span class="messages"></span>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-sm-4 col-form-label">Bidang</label>
-                        <div class="col-sm-8">
-                          <input type="text" class="form-control" name="bidang" id="bidang" placeholder="Masukkan Bidang">
+                          <input type="number" class="form-control" name="bekerja" id="bekerja" placeholder="Masukkan bekerja">
                           <span class="messages"></span>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-sm-4 col-form-label">Jenis</label>
+                        <label class="col-sm-4 col-form-label">Belum Bekerja</label>
                         <div class="col-sm-8">
-                          <input type="text" class="form-control" name="jenis" id="jenis" placeholder="Masukkan Jenis">
+                          <input type="number" class="form-control" name="belum_bekerja" id="belum_bekerja" placeholder="Masukkan belum bekerja">
                           <span class="messages"></span>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-sm-4 col-form-label">Jumlah</label>
+                        <label class="col-sm-4 col-form-label">Lanjut Kuliah</label>
                         <div class="col-sm-8">
-                          <input type="number" class="form-control" name="jumlah" id="jumlah" placeholder="Masukkan Jumlah">
+                          <input type="number" class="form-control" name="lanjut_kuliah" id="lanjut_kuliah" placeholder="Masukkan lanjut kuliah">
+                          <span class="messages"></span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label">Wiraswasta</label>
+                        <div class="col-sm-8">
+                          <input type="number" class="form-control" name="wiraswasta" id="wiraswasta" placeholder="Masukkan wiraswasta">
                           <span class="messages"></span>
                         </div>
                     </div>
@@ -193,13 +190,12 @@ modal tambah data
 </div>
 
 
-
 {{-- modal edit data --}}
 <div class="modal fade" id="edit-Modal" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h4 class="modal-title">Edit Jumlah Mahasiswa</h4>
+          <h4 class="modal-title">Edit Jumlah Alumni</h4>
           <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -208,7 +204,7 @@ modal tambah data
             <div class="card">
                 <div class="card-block">
                     <form id="edit-form" novalidate>
-                        <input type="hidden" name="idprestasi" id="idprestasi">
+                        <input type="hidden" name="idalumni" id="idalumni">
                         <div class="form-group row">
                             <label class="col-sm-4 col-form-label">Tanggal Transaksi</label>
                             <div class="col-sm-8">
@@ -238,34 +234,30 @@ modal tambah data
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-sm-4 col-form-label">Kategori</label>
+                            <label class="col-sm-4 col-form-label">Bekerja</label>
                             <div class="col-sm-8">
-                                <select class="form-control" name="edit_kategori" id="edit_kategori">
-                                    <option value="0">:: Pilih Kategori ::</option>
-                                    <option value="akademik">akademik</option>
-                                    <option value="nonakademik">Nonakademik</option>
-                                </select>
-                                <span class="messages"></span>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-sm-4 col-form-label">Bidang</label>
-                            <div class="col-sm-8">
-                              <input type="text" class="form-control" name="edit_bidang" id="edit_bidang" placeholder="Masukkan Bidang">
+                              <input type="number" class="form-control" name="edit_bekerja" id="edit_bekerja" placeholder="Masukkan bekerja">
                               <span class="messages"></span>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-sm-4 col-form-label">Jenis</label>
+                            <label class="col-sm-4 col-form-label">Belum Bekerja</label>
                             <div class="col-sm-8">
-                              <input type="text" class="form-control" name="edit_jenis" id="edit_jenis" placeholder="Masukkan Jenis">
+                              <input type="number" class="form-control" name="edit_belum_bekerja" id="edit_belum_bekerja" placeholder="Masukkan belum bekerja">
                               <span class="messages"></span>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-sm-4 col-form-label">Jumlah</label>
+                            <label class="col-sm-4 col-form-label">Lanjut Kuliah</label>
                             <div class="col-sm-8">
-                              <input type="number" class="form-control" name="edit_jumlah" id="edit_jumlah" placeholder="Masukkan Jumlah">
+                              <input type="number" class="form-control" name="edit_lanjut_kuliah" id="edit_lanjut_kuliah" placeholder="Masukkan lanjut kuliah">
+                              <span class="messages"></span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-form-label">Wiraswasta</label>
+                            <div class="col-sm-8">
+                              <input type="number" class="form-control" name="edit_wiraswasta" id="edit_wiraswasta" placeholder="Masukkan wiraswasta">
                               <span class="messages"></span>
                             </div>
                         </div>
@@ -282,7 +274,7 @@ modal tambah data
 </div>
 
 {{-- modal ubah password --}}
-{{-- <div class="modal fade" id="edit-password" tabindex="-1" role="dialog">
+<div class="modal fade" id="edit-password" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -313,7 +305,7 @@ modal tambah data
         </div>
       </div>
     </div>
-</div> --}}
+</div>
 @endsection
 
 @section('own_js')
@@ -352,5 +344,5 @@ modal tambah data
     <script type="text/javascript" src="{{ asset('assets/bower_components/jquery-minicolors/jquery.minicolors.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/assets/pages/advance-elements/custom-picker.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/assets/pages/advance-elements/moment-with-locales.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('own_assets/scripts/pages/mahasiswa_berprestasi.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('own_assets/scripts/pages/alumni.js') }}"></script>
 @endsection

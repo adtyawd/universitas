@@ -6,8 +6,12 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\MonitorController;
 use App\Http\Controllers\PesertaController;
+use App\Http\Controllers\TblAlumniController;
 use App\Http\Controllers\TblJlhMahasiswaBerprestasiController;
 use App\Http\Controllers\TblJlhMahasiswaController;
+use App\Http\Controllers\TblPengabdianMasyarakatController;
+use App\Http\Controllers\TblProdukInovasiController;
+use App\Http\Controllers\TblPublikasiPenelitianController;
 use App\Http\Controllers\TblTenagaPendidikController;
 use App\Http\Controllers\UndianController;
 use Illuminate\Support\Facades\Route;
@@ -76,6 +80,30 @@ Route::middleware('auth')->group(function () {
     Route::get('/daftar-dosen/edit-data', [TblTenagaPendidikController::class, 'edit']);
     Route::post('/daftar-dosen/update-data', [TblTenagaPendidikController::class, 'update']);
     Route::post('/daftar-dosen/delete-data', [TblTenagaPendidikController::class, 'delete']);
+
+    Route::get('/daftar-penelitian', [TblPublikasiPenelitianController::class, 'index']);
+    Route::post('/daftar-penelitian/store-admin', [TblPublikasiPenelitianController::class, 'store']);
+    Route::get('/daftar-penelitian/edit-data', [TblPublikasiPenelitianController::class, 'edit']);
+    Route::post('/daftar-penelitian/update-data', [TblPublikasiPenelitianController::class, 'update']);
+    Route::post('/daftar-penelitian/delete-data', [TblPublikasiPenelitianController::class, 'delete']);
+
+    Route::get('/daftar-inovasi', [TblProdukInovasiController::class, 'index']);
+    Route::post('/daftar-inovasi/store-admin', [TblProdukInovasiController::class, 'store']);
+    Route::get('/daftar-inovasi/edit-data', [TblProdukInovasiController::class, 'edit']);
+    Route::post('/daftar-inovasi/update-data', [TblProdukInovasiController::class, 'update']);
+    Route::post('/daftar-inovasi/delete-data', [TblProdukInovasiController::class, 'delete']);
+
+    Route::get('/daftar-pengabdian', [TblPengabdianMasyarakatController::class, 'index']);
+    Route::post('/daftar-pengabdian/store-admin', [TblPengabdianMasyarakatController::class, 'store']);
+    Route::get('/daftar-pengabdian/edit-data', [TblPengabdianMasyarakatController::class, 'edit']);
+    Route::post('/daftar-pengabdian/update-data', [TblPengabdianMasyarakatController::class, 'update']);
+    Route::post('/daftar-pengabdian/delete-data', [TblPengabdianMasyarakatController::class, 'delete']);
+
+    Route::get('/daftar-alumni', [TblAlumniController::class, 'index']);
+    Route::post('/daftar-alumni/store-admin', [TblAlumniController::class, 'store']);
+    Route::get('/daftar-alumni/edit-data', [TblAlumniController::class, 'edit']);
+    Route::post('/daftar-alumni/update-data', [TblAlumniController::class, 'update']);
+    Route::post('/daftar-alumni/delete-data', [TblAlumniController::class, 'delete']);
 
     Route::post('/logout', [AuthController::class, 'logout']);
 });

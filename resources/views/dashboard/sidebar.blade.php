@@ -11,6 +11,11 @@
         <ul class="pcoded-submenu">
 
           <li class>
+            <a href="/home">
+              <span class="pcoded-mtext">Dashboard Home</span>
+            </a>
+          </li>
+          <li class>
             <a href="/daftar-admin">
               <span class="pcoded-mtext">Daftar Admin</span>
             </a>
@@ -28,11 +33,6 @@
           <li class>
             <a href="/daftar-dosen">
               <span class="pcoded-mtext">Tenaga Pendidik</span>
-            </a>
-          </li>
-          <li class>
-            <a href="/daftar-tendik">
-              <span class="pcoded-mtext">Tenaga Kependidikan</span>
             </a>
           </li>
           <li class>
